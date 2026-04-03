@@ -16,16 +16,16 @@ module Color
   WHITE  = "\e[97m"
   GRAY   = "\e[90m"
 
-  def self.color(code, text) = "#{code}#{text}#{RESET}"
-  def self.bold(text)        = color(BOLD, text)
-  def self.red(text)         = color(RED, text)
-  def self.green(text)       = color(GREEN, text)
-  def self.yellow(text)      = color(YELLOW, text)
-  def self.cyan(text)        = color(CYAN, text)
-  def self.blue(text)        = color(BLUE, text)
-  def self.magenta(text)     = color(MAGENTA, text)
-  def self.white(text)       = color(WHITE, text)
-  def self.gray(text)        = color(GRAY, text)
+  def self.color(code, text); "#{code}#{text}#{RESET}"; end
+  def self.bold(text);    color(BOLD, text);    end
+  def self.red(text);     color(RED, text);     end
+  def self.green(text);   color(GREEN, text);   end
+  def self.yellow(text);  color(YELLOW, text);  end
+  def self.cyan(text);    color(CYAN, text);    end
+  def self.blue(text);    color(BLUE, text);    end
+  def self.magenta(text); color(MAGENTA, text); end
+  def self.white(text);   color(WHITE, text);   end
+  def self.gray(text);    color(GRAY, text);    end
 end
 
 # ─── Pet ────────────────────────────────────────────────────────────────────
@@ -170,14 +170,14 @@ class Pet
 
   # ── Helpers ───────────────────────────────────────────────────────────────
 
-  def alive? = @alive
+  def alive?; @alive; end
 
   def mood_info
     MOODS.each { |range, info| return info if range.include?(@mood.round) }
     MOODS.values.last
   end
 
-  def stage_sprite = SPRITES[@stage]
+  def stage_sprite; SPRITES[@stage]; end
 
   def stat_bar(value, width = 20)
     filled = (value / MAX_STAT.to_f * width).round
@@ -194,7 +194,7 @@ class Pet
 
   private
 
-  def clamp(v) = [[v.round, 0].max, MAX_STAT].min
+  def clamp(v); [[v.round, 0].max, MAX_STAT].min; end
 
   def push_log(msg)
     @log << "[#{Time.now.strftime('%H:%M:%S')}] #{msg}"
